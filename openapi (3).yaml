@@ -1,0 +1,190 @@
+openapi : 3.0.2
+info : 
+  title : DSTUmeeting up
+  description: StartUp - DonSTU students dating site
+  version: 0.0.1
+servers: 
+- url: http://ilon-maks.online
+  description: Service on Reg.ru without SSL 
+paths:
+  /user:
+    get:
+      description: Get all users only have admin rights
+      tags:
+      - user
+      operationId: GetAllUsers
+      responses:
+        "200":
+          description: array succes return
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        "default":
+          description: Any problems with responses
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      description: Add new User in mysql
+      tags:
+      - user
+      operationId: AddUser
+      requestBody:
+        required: true
+        content:
+          aplication/json:
+            schema:
+                  $ref: "#/components/schemas/User"
+      responses:
+        "200":
+          description: Succsess Add
+          
+        "default":
+          description: Any problems with responses
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+            
+  /user/{user_id}:
+    get:
+      description: Get User when khow id
+      tags:
+        - user
+      operationId: GetUserById
+      parameters:
+      - name:
+          user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: dlkf-dfjs-1lsk-ssdk
+        
+      responses:
+        "200":
+          description: array succes return
+          content:
+            aplication/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "default":
+          description: Any problems with responses
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+            
+    delete:
+      description: delete user by admin
+      tags:
+      - user
+      operationId: DeleteUser
+      parameters:
+      - name:
+          user_id
+        in: 
+          path
+        required: true
+        schema:
+          type: string
+          example: dlkf-dfjs-1lsk-ssdk
+        
+      responses:
+        "200":
+          description: delete succes
+        "default":
+          description: Any problems with responses
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    patch:
+      description: rewrite user 
+      tags:
+      - user
+      operationId: RewriteUser
+      parameters:
+      - name:
+          user_id
+        in: 
+          path
+        required: true
+        schema:
+          type: string
+          example: dlkf-dfjs-1lsk-ssdk
+        
+      responses:
+        "200":
+          description: Rewrite succes
+        "default":
+          description: Any problems with responses
+          content: 
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    User:
+      type: object
+      required: 
+        - name
+        - lastname
+        - departament
+        - age
+        - description
+        - male
+      properties:
+        user_id:
+          type: string
+          example: dlkf-dfjs-1lsk-ssdk
+        name:
+          type: string
+          example: Afrodit
+        lastname:
+          type: string
+          example: Hermanov
+        departament:
+          type: string
+          enum: 
+            - AmiY
+            - IiVT
+            - IST
+            - AP
+        age:
+          type: number
+          example: 18
+        male:
+          type: string
+          enum:
+          - man
+          - Woman
+          
+    Users:
+      type: array
+      items:
+        $ref: "#/components/schemas/User"
+        
+        
+    Error:
+      type: object
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+          
+          
+      
+      
+          
+        
+      
+    
+              
+         
