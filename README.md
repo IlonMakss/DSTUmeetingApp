@@ -15,3 +15,4 @@ Backend: PHP
 Frontend: HTML, CSS, JavaScript (Jquery)
 База данных: MySQL
 Аутентификация: JWT / OAuth 
+Стэк: LEMP
