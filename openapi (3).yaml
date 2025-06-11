@@ -1,5 +1,5 @@
 openapi : 3.0.2
-info : 
+info :  
   title : DSTUmeeting up
   description: StartUp - DonSTU students dating site
   version: 0.0.1
