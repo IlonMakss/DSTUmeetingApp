@@ -4,6 +4,7 @@
 ✨Возможности
 
 
+
 Регистрация и авторизация пользователей
 Создание и редактирование профиля
 Добавление фотографий
@@ -16,3 +17,4 @@ Frontend: HTML, CSS, JavaScript (Jquery)
 База данных: MySQL
 Аутентификация: JWT / OAuth 
 Стэк: LEMP
+![image](https://github.com/user-attachments/assets/5747c178-9dbb-4ddd-9904-6d384a761fdb)
